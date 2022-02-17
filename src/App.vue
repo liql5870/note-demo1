@@ -2,29 +2,60 @@
   <div id="app">
     <div id="nav">
     </div>
+    <sidebar></sidebar>
     <router-view/>
   </div>
 </template>
+<script lang="ts">
+import sidebar from '@/components/Sidebar.vue'
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+export default {
+  name: 'app',
+  components: { sidebar }
 }
 
-#nav {
-  padding: 30px;
+</script>
+<style lang="scss">
+@import '//at.alicdn.com/t/font_496303_kqrjhri8l25d0a4i.css';
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  background-color: #eee;
+}
+
+a {
+  text-decoration: none;
+  color: #444;
+}
+
+ul, li {
+  list-style: none;
+}
+
+.btn {
+  color: #666;
+  font-size: 12px;
+  padding: 2px 4px;
+  background-color: #fff;
+  box-shadow: 0 0 2px 0 #ccc;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#app {
+  display: flex;
+  align-items: stretch;
 }
 </style>
