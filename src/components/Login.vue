@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import Auth from '@/apis/auth.js'
+
 export default {
   data () {
     return {
@@ -50,7 +52,6 @@ export default {
       }
     }
   },
-
   methods: {
     showLogin () {
       this.isShowLogin = true
@@ -74,6 +75,13 @@ export default {
       this.register.isError = false
       this.register.notice = ''
       console.log(`start register..., username: ${this.register.username} , password: ${this.register.password}`)
+      // eslint-disable-next-line no-unused-expressions
+      Auth.register({
+        username: this.register.username,
+        password: this.register.password
+      }).then(data => {
+        console.log(data)
+      })
     },
     onLogin () {
       if (!/^[\w\u4e00-\u9fa5]{3,15}$/.test(this.login.username)) {
@@ -86,13 +94,22 @@ export default {
         this.login.notice = '密码长度为6~16个字符'
         return
       }
-      this.login.isError = false
-      this.login.notice = ''
-
       console.log(`start login..., username: ${this.login.username} , password: ${this.login.password}`)
+      // eslint-disable-next-line no-unused-expressions
+      Auth.login({
+        username: this.login.username,
+        password: this.login.password
+      }).then(data => {
+        this.login.isError = false
+        this.login.notice = ''
+        console.log('start redirect...')
+      }).catch(data => {
+        console.log(data)
+        this.login.isError = true
+        this.login.notice = data.msg
+      })
     }
   }
-
 }
 
 </script>
@@ -118,7 +135,7 @@ export default {
 .modal-container {
   width: 800px;
   height: 500px;
-  margin: 0px auto;
+  margin: 0 auto;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
