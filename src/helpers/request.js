@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.headers.post['content-Type'] = 'application/x-www-form-urlencoded'
+// axios.defaults.headers.post['content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.baseURL = 'https://note-server.hunger-valley.com/'
 axios.defaults.withCredentials = true
 

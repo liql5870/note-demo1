@@ -1,4 +1,10 @@
-// // const path = require('path')
+module.exports = {
+  devServer: {
+    https: true
+  }
+}
+
+//  const path = require('path')
 //
 // module.exports = {
 //   lintOnSave: false,
@@ -25,3 +31,4 @@
 //     // config.module.rule('svg').exclude.add(dir)
 //   }
 // }
+
