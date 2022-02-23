@@ -6,15 +6,15 @@
 
 <script lang="ts">
 
-let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext)
+const importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext)
 try {
   importAll(require.context('../assets/icons', true, /|.svg$/))
 } catch (err) {
   console.log(err)
 }
 export default {
-  props: ["name"],
-  name: "Icon"
+  props: ['name'],
+  name: 'Icon'
 }
 </script>
 

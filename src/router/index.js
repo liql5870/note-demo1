@@ -7,7 +7,7 @@ import TrashDetail from '@/components/TashDetail.vue'
 
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [
+const routes = [
   {
     path: '/login',
     name: 'Login',
@@ -19,11 +19,11 @@ const routes: Array<RouteConfig> = [
     component: NotebookList
   },
   {
-    path: '/note/:noteId',
+    path: '/note',
     component: NoteDetail
   },
   {
-    path: '/trash/:noteId',
+    path: '/trash',
     component: TrashDetail
   }
 

@@ -11,6 +11,9 @@
   "dependencies": {
     "axios": "^0.26.0",
     "core-js": "^3.6.5",
+    "element-theme": "^2.0.1",
+    "element-ui": "^2.15.6",
+    "markdown-it": "^12.3.2",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.1.2",
@@ -33,6 +36,7 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^1.0.3",
     "chai": "^4.1.2",
+    "element-theme-chalk": "^2.15.6",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",

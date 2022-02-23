@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-    </div>
     <sidebar></sidebar>
     <router-view/>
+    <div id="nav">
+    </div>
+
   </div>
 </template>
-<script lang="ts">
+<script >
 import sidebar from '@/components/Sidebar.vue'
 
 export default {
   name: 'app',
-  components: { sidebar }
+  components: { sidebar },
+  methods: {
+  }
+
 }
 
 </script>

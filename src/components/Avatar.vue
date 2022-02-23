@@ -13,7 +13,7 @@ export default {
     }
   },
   created () {
-    Bus.$on('userInfo',user =>{
+    Bus.$on('userInfo', user => {
       this.username = user.username
     })
     Auth.getInfo().then(res => {
