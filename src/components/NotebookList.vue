@@ -1,6 +1,7 @@
 <template>
   <div class="detail" id="notebook-list">
     <header>
+<!--      绑定了一个点击事情并且使用prevent取消了默认的跳转，绑定事件为oncreate方法-->
       <a href="#" class="btn" @click.prevent="onCreate"><i class="iconfont icon-plus"></i> 新建笔记本</a>
     </header>
     <main>
@@ -24,9 +25,7 @@
   </div>
 </template>
 <script>
-import Auth from '@/apis/auth'
-import Notebooks from '@/apis/notebooks'
-import { friendlyDate } from '@/helpers/util'
+
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 // window.Notebooks = Notebooks
@@ -39,6 +38,7 @@ export default {
   created () {
     this.checkLogin({ path: '/login' })
     this.getNotebooks()
+    console.log('显示正常码')
   },
 
   computed: {
@@ -53,14 +53,16 @@ export default {
       'deleteNotebook',
       'checkLogin'
     ]),
-
+    // 该方法是用作去创建一个新的笔记本,这里调用element-ui组件
     onCreate () {
       this.$prompt('输入新笔记本标题', '创建笔记本', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        inputPattern: /^.{1,30}$/,
-        inputErrorMessage: '标题不能为空，且不超过30个字符'
+        inputPattern: /^.{1,30}$/, // 该属性是使用正则判断不超过30个字符串
+        inputErrorMessage: '标题不能为空，且不超过30个字符' // 错误的提示，标题不能为空且不超过30个字符
       }).then(({ value }) => {
+        // 这里成功就会执行then 操作，把value值传递给vuex中的addNotebook事件，并把笔记本标题value赋值给title。
+        // 调用了vuex中的addNotebook mutation
         this.addNotebook({ title: value })
       })
     },
@@ -77,7 +79,6 @@ export default {
         this.updateNotebook({ notebookId: notebook.id, title: value })
       })
     },
-
     onDelete (notebook) {
       this.$confirm('确认要删除笔记本吗', '删除笔记本', {
         confirmButtonText: '确定',

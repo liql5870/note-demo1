@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import VueRouter from 'vue-router'
 import Login from '@/components/Login.vue'
 import NotebookList from '@/components/NotebookList.vue'
 import NoteDetail from '@/components/NoteDetail.vue'
@@ -30,7 +30,6 @@ const routes = [
 ]
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 

@@ -19,17 +19,36 @@ const mutations = {
 }
 
 const actions = {
-  login ({ commit }, { username, password }) {
-    return Auth.login({ username, password })
+  login ({ commit }, {
+    username,
+    password
+  }) {
+    return Auth.login({
+      username,
+      password
+    })
       .then(res => {
         commit('setUser', { user: res.data })
       })
   },
 
-  register ({ commit }, { username, password }) {
-    return Auth.register({ username, password })
+  register ({ commit }, {
+    username,
+    password
+  }) {
+    return Auth.register({
+      username,
+      password
+    })
       .then(res => {
         commit('setUser', { user: res.data })
+      })
+  },
+  logout ({ commit }, payload = { path: '/login' }) {
+    return Auth.logout()
+      .then(res => {
+        commit('setUser', { user: null })
+        router.push(payload)
       })
   },
 

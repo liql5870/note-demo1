@@ -1,6 +1,8 @@
+// 引入了request封装的api
 import request from '@/helpers/request.js'
+// 引入了日期处理的api
 import { friendlyDate } from '@/helpers/util'
-
+// 提前把Ulr声明为变量
 const URL = {
   GET: '/notebooks',
   ADD: '/NOTEBOOKS',
@@ -9,40 +11,33 @@ const URL = {
 }
 
 export default {
+  // getAll 函数是用来获取全部的notebook数据的，它返回一个promise对象，
   getAll () {
     return new Promise((resolve, reject) => {
       request(URL.GET)
         .then(res => {
-          res.data = res.data.sort((notebook1, notebook2) => notebook1.createAt < notebook2.createAt ? 1 : -1)
-          res.data.forEach(notebook => {
-            notebook.friendlyCreatedAt = friendlyDate(notebook.createdAt)
+          res.data = res.data.sort((notebook1, notebook2) => {
+            return notebook1.createAt - notebook2.createAt
+          })
+          res.data.forEach((notebook) => {
+            notebook.createdAtFriendly = friendlyDate(notebook.createdAt)
+            notebook.updatedAtFriendly = friendlyDate(notebook.updatedAt)
           })
           resolve(res)
-        }).catch(err => {
-          reject(err)
-        })
+        }
+        )
+        .catch(err => reject(err))
     })
   },
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   updateNotebook (notebookId, { title = '' } = { title: '' }) {
     return request(URL.UPDATE.replace(':id', notebookId), 'PATCH', { title })
   },
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   deleteNotebook (notebookId) {
     return request(URL.DELETE.replace(':id', notebookId), 'DELETE')
   },
-  addNote ({ notebookId }, {
-    title = '',
-    content = ''
-  } = {
-    title: '',
-    content: ''
-  }) {
+  addNotebook ({ title = '' } = { title: '' }) {
     return new Promise((resolve, reject) => {
-      request(URL.ADD.replace(':notebookId', notebookId), 'POST', {
-        title,
-        content
-      })
+      request(URL.ADD, 'POST', { title })
         .then(res => {
           res.data.createdAtFriendly = friendlyDate(res.data.createdAt)
           res.data.updatedAtFriendly = friendlyDate(res.data.updatedAt)

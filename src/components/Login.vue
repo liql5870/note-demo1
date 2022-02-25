@@ -33,8 +33,6 @@
 
 <script>
 
-import Auth from '@/apis/auth'
-import Bus from '@/helpers/bus'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -154,8 +152,9 @@ export default {
 
   .main {
     flex: 1;
-    background: #36bc64 url(//cloud.hunger-valley.com/17-12-13/38476998.jpg-middle) center center no-repeat;
+    background: #efabc4 url(../assets/tiger.png) center center no-repeat;
     background-size: contain;
+    //#36bc64 url(//cloud.hunger-valley.com/17-12-13/38476998.jpg-middle) center center no-repeat;
   }
 
   .form {
@@ -177,7 +176,7 @@ export default {
     }
 
     .button {
-      background-color: #2bb964;
+      background-color: #efabc4;
       height: 36px;
       line-height: 36px;
       text-align: center;

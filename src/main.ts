@@ -1,6 +1,11 @@
+
 import Vue from 'vue'
 import App from './App.vue'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import router from './router'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -10,8 +15,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App)
 }).$mount('#app')
